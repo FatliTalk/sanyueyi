@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!-- 在移动设备浏览器上，通过为视口（viewport）设置 meta 属性为 user-scalable=no 可以禁用其缩放（zooming）功能。 -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<meta name="description" content="">
+<meta name="author" content="">
+<!--<link rel="icon" href="../../favicon.ico">-->
+<title>三月一科技</title>
+
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<!-- 滚动条 -->
+<style>
+body {
+	/*	min-height: 20000px;*/
+	padding-top: 70px;
+}
+.copyright {
+	background: #111;
+	font-size: 13px;
+	text-align: center;
+	color: #555;
+	padding-top: 14px;
+	padding-bottom: 20px;
+	border-top: 1px solid #303030;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Fixed navbar 固定的顶部导航栏 --> 
+<!--  添加反色（黑色）效果 navbar-inverse -->
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            <a class="navbar-brand" href="#">三月一科技</a> </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="">主页</a></li>
+                <li><a href="about.html">关于我们</a></li>
+                <li><a href="join.html">加入我们</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse --> 
+    </div>
+</nav>
+
+<!--顶部图片-->
+<div class="container"> <img src="images/top.png" class="img-responsive center-block" alt="Responsive image"> </div>
+
+<!-- 巨幕。响应式定宽处理， class="container" 自动计算巨幕两端宽度 -->
+<div class="container"> 
+    <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron"> 
+        <!-- 连接，触手可及 Connection, at your fingertips -->
+        <p>「互联网+」时代，我们为连接一切提供解决方案，连接您的产品，连接您的客户...</p>
+    </div>
+</div>
+<!-- /container --> 
+
+<!-- 缩略图 三列-->
+<div class="container">
+    <div class="bs-example" data-example-id="thumbnails-with-custom-content">
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail"> <img data-src="holder.js/100%x200" alt="100%x200 小程序" src="images/miniApps.png" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
+                    <div class="caption">
+                        <h4>小程序，不止于小</h4>
+                        <p> 小程序是一种新的开放能力，可以在微信内被便捷地获取和传播。 <br>
+                            我们致力开发出适用您商业模式的微信小程序，为连接您的产品，连接您的客户提供无限可能！ </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail"> <img data-src="holder.js/100%x200" alt="100%x200 网站" src="images/webPage.png" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
+                    <div class="caption">
+                        <h4>再小的个体，也有自己的网站</h4>
+                        <p> 互联网时代，对企业来说，拥有网站就拥有网络沟通能力。 <br>
+                            再小的个体，也需要连接互联网，介绍您的产品，传播您的声音，我们提供响应式静态网站开发。 </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail"> <img data-src="holder.js/100%x200" alt="100%x200 番职报修" src="images/repairPlatform.png" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
+                    <div class="caption">
+                        <h4>番职报修</h4>
+                        <p> 为方便师生们进行手机或电脑的报修，三月一科技将推出「番职报修」小程序。 <br>
+                            线下一个二维码，线上连接你我，报修如此简单。维修技术支持：三月一快修&计算机协会。 </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 底部：版权 © 信息-->
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> <span>Copyright <span id="Copyright">©</span> 2016 - 2017 MARCH 1 TECH. All Rights Reserved</span> </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+    ================================================== --> 
+<!-- Placed at the end of the document so the pages load faster --> 
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script> 
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script> 
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
