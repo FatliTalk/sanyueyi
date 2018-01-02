@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <!-- 在移动设备浏览器上，通过为视口（viewport）设置 meta 属性为 user-scalable=no 可以禁用其缩放（zooming）功能。 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="icon" href="../../favicon.ico"> -->
+    <title>番职二手展销平台</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- 滚动条 -->
+  <style>
+  body {
+     /*	min-height: 20000px;*/
+     padding-top: 70px;
+ }
+ .copyright {
+   background: #111;
+   font-size: 13px;
+   text-align: center;
+   color: #555;
+   padding-top: 14px;
+   padding-bottom: 20px;
+   border-top: 1px solid #303030;
+}
+</style>
+</head>
+
+<body>
+
+    <!-- Fixed navbar 固定的顶部导航栏 --> 
+    <!--  添加反色（黑色）效果 navbar-inverse -->
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <a class="navbar-brand" href="#">番职二手·展销平台</a> </div>
+        <!-- <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="home.html">主页</a></li>
+                <li><a href="about.html">关于我们</a></li>
+                <li><a href="join.html">加入我们</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+            </ul>
+        </div>-->        
+        <!--/.nav-collapse --> 
+    </div>
+</nav>
+
+<!--顶部图片-->
+<div class="container"> <img src="images/ITStore237K.jpg" class="img-responsive center-block" alt="门店图片"> </div>
+
+
+<!-- 巨幕。响应式定宽处理， class="container" 自动计算巨幕两端宽度 -->
+<div class="container"> 
+    <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron"  style="text-align: center"> 
+        <h4>产品类型</h4>
+        <p style="font-size: 13px">
+            以电子产品为主但不限于电子产品：
+            <br>
+            手机、电脑、手机电脑配件、单反、洗衣机、电吹风、台灯、单车、电车、打印机、办公用品、文具……
+        </p>
+
+        <h4>运营模式</h4>
+        <p style="font-size: 13px"> 「番职报修」作为平台方进行二手闲置产品回收和展销，卖家坐等收钱，交易成功后返还卖家资金。
+        </p>
+
+        <ul style="font-size: 13px; text-align: left; line-height: 1.8em">
+            <li>「番职报修」提供二手闲置O2O交易展销平台（ 100m<sup>2</sup> 超大实体店 + 线上商城）</li>
+            <li>「番职报修」与卖家共同协商产品销售价格</li>
+            <li>「番职报修」负责“产品评测 - 销售 - 售后”环节，卖家坐等收钱，「番职报修」抽取交易额的 20% 作为劳务费（含场地展销费、商城上架费、评测、销售、售后、宣传推广费用等）</li>
+        </ul>
+
+        <br>
+
+        <hr>
+
+        <h4>二手闲置促成交易协议（模板）</h4>
+        <p style="font-size: 13px; text-align: left; line-height: 1.8em">
+            甲方（卖家）：
+            乙方：番职报修（广州番禺职业技术学院-创业产业园B1号）
+
+            总则：
+            甲乙双方本着平等互利、合作共赢的原则签订本二手闲置促成交易协议（下面简称“本协议”）。
+
+            合作模式：
+
+            <i>乙方作为平台方进行二手闲置产品回收和展销，交易成功后返还卖家资金</i>
+
+            1. 乙方提供技术人员对二手闲置产品进行质量检测，甲方须如实说明产品存在的问题，保证消费者权益并促成交易成功
+            2. 乙方提供 O2O 平台（ 100m^2^ 超大实体店 + 线上商城）展示二手闲置产品并促成交易。乙方有义务积极促成交易，在实体店及线上商城进行有效展销，并进行一个月不低于一次的宣传推广活动（含公众号／派发传单／线下活动）
+            3. 乙方与甲方共同协商产品销售价格，乙方每一个非自然月可以对产品进行浮动不超过 30% 的调价，以便促成交易成功
+            4. 乙方负责「产品鉴定评测 - 销售 - 售后」环节，其中售后时间为 7 天，乙方抽取交易额的 20% 作为劳务费（含场地展销费、商城上架费、评测、销售、售后、宣传费用等）
+            5. 二手闲置产品的交易资金由买家转账到乙方，乙方需在售后期结束后的 7 个工作日内把应转资金转账给甲方
+            6. 乙方与甲方签订本协议，在协议时间内（原则上不超过6个月）乙方全权负责该二手闲置产品的销售，甲乙双方不得单方面中断协议，甲方不得在协议时间内取回产品，乙方不得在协议时间内中断产品销售。超过协定时间后，本协议无效，乙方与甲方另外沟通决定产品的处理方式
+            <br>
+            产品信息（型号、原价、使用时长、是否在保修期、是否有发票、存在问题等）：
+            <br>
+            <br>
+            <br>
+            乙方代理甲方该产品销售时间：
+            <br>
+            建议销售价格：¥
+            <br>
+            甲方签名／手机号：
+            <br>
+            乙方签名／手机号：
+            <br>
+            <br>
+            协议签订日期：        年    月    日
+        </p> 
+
+        <address>
+            <strong>联系方式</strong> <br>
+            <br>
+            广州市 番禺区 广州番禺职业技术学院<br>
+            创业产业园（西区创业园)<br>
+            <br>
+            <span style="font-size: 10px; "> 番职报修 </span>
+        </address>
+        电话 / 微信（李同学）：<a href="tel://15626236918">15626236918</a><br>
+        电话 / 微信（范同学）：<a href="tel://17620808218">17620808218</a><br>
+        <address>
+
+    <!--
+    <br>
+    <img src="images/三月一科技9月招新80-180-2.jpg" style="max-width: 80%; height: auto; display: block;" class="img-thumbnail center-block" alt="三月一科技9月招新">
+-->
+
+</div>
+</div>
+<!-- /container --> 
+
+
+<!-- 底部：版权 © 信息-->
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> <span>Copyright <span id="Copyright">©</span> 2016 - 2018 MARCH 1 TECH. All Rights Reserved</span> </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+    ================================================== --> 
+    <!-- Placed at the end of the document so the pages load faster --> 
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script> 
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script> 
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
