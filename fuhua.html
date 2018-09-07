@@ -1,16 +1,17 @@
 <!doctype html>
-<html style='font-size:14px !important'>
+<html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>福华驾校 | 番职门店</title><link rel="icon" href="./images/fuhua.ico"><link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; }
+<title>福华驾校 | 番职门店</title><link rel="icon" href="./images/fuhua.ico"><link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: 'Lucida Console',Consolas,'Courier',monospace; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+iframe { margin: auto; }
 a.url { word-break: break-all; }
 a:active, a:hover { outline: 0px; }
 .in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; padding-bottom: 70px; white-space: pre-wrap; overflow-x: visible; }
-.first-line-indent #write p .md-line { text-indent: 0px; }
-.first-line-indent #write li, .first-line-indent #write p, .first-line-indent #write p .md-line:first-child { text-indent: 2em; }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; padding-bottom: 70px; overflow-x: visible; }
+.first-line-indent #write div, .first-line-indent #write li, .first-line-indent #write p { text-indent: 2em; }
+.first-line-indent #write div :not(p):not(div), .first-line-indent #write div.md-htmlblock-container, .first-line-indent #write p *, .first-line-indent pre { text-indent: 0px; }
 .for-image #write { padding-left: 8px; padding-right: 8px; }
 body.typora-export { padding-left: 30px; padding-right: 30px; }
 @media screen and (max-width: 500px) { 
@@ -35,9 +36,7 @@ h3 { font-size: 1.6rem; }
 h4 { font-size: 1.4rem; }
 h5 { font-size: 1.2rem; }
 h6 { font-size: 1rem; }
-h1, h2, h3, h4, h5, h6 { margin-top: 1rem; margin-bottom: 1rem; }
-p { -webkit-margin-before: 1rem; -webkit-margin-after: 1rem; -webkit-margin-start: 0px; -webkit-margin-end: 0px; }
-.mathjax-block { margin-top: 0px; margin-bottom: 0px; -webkit-margin-before: 0px; -webkit-margin-after: 0px; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
 .hidden { display: none; }
 .md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
 a { cursor: pointer; }
@@ -56,15 +55,17 @@ table.md-table td { min-width: 80px; }
 .CodeMirror pre { padding: 0px 4px; }
 .CodeMirror-lines { padding: 0px; }
 div.hr:focus { cursor: none; }
-pre { white-space: pre-wrap; }
-pre.contain-cm { white-space: normal; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
 .CodeMirror-gutters { margin-right: 4px; }
 .md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
 .md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
-.md-fences.mock-cm { white-space: pre-wrap; }
-.show-fences-line-number .md-fences { padding-left: 0px; }
-.show-fences-line-number .md-fences.mock-cm { padding-left: 40px; }
-.CodeMirror-line { break-inside: avoid; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
 .footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
 .footnotes + .footnotes { margin-top: 0px; }
 .md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
@@ -75,7 +76,7 @@ li { margin: 0px; position: relative; }
 blockquote > :last-child { margin-bottom: 0px; }
 blockquote > :first-child, li > :first-child { margin-top: 0px; }
 .footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
-.footnote-line { white-space: pre-wrap; }
+#write .footnote-line { white-space: pre-wrap; }
 @media print { 
   body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
   #write { margin-top: 0px; border-color: transparent !important; }
@@ -89,11 +90,10 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
 a img, img a { cursor: pointer; }
 pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
 p > img:only-child { display: block; margin: auto; }
-.md-line > .md-image:only-child, p > .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
+p > .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
 #write .MathJax_Display { margin: 0.8em 0px 0px; }
-.mathjax-block { white-space: pre; overflow: hidden; width: 100%; }
-p + .mathjax-block { margin-top: -1.143rem; }
-.mathjax-block:not(:empty)::after { display: none; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
 [contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
 .md-task-list-item { position: relative; list-style-type: none; }
 .task-list-item.md-task-list-item { padding-left: 0px; }
@@ -122,22 +122,26 @@ a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; 
 .footnote-line a:not(.reversefootnote) { color: inherit; }
 .md-attr { display: none; }
 .md-fn-count::after { content: '.'; }
-code, pre, tt { font-family: var(--monospace); }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
 .md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
 code { text-align: left; }
-a.md-print-anchor { border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
 .md-inline-math .MathJax_SVG .noError { display: none !important; }
-.mathjax-block .MathJax_SVG_Display { text-align: center; margin: 1em 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; display: block !important; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
 .MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
-.MathJax_SVG .MJX-monospace { font-family: monospace; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
 .MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
 .MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
 .MathJax_SVG * { transition: none; }
 .os-windows.monocolor-emoji .md-emoji { font-family: 'Segoe UI Symbol', sans-serif; }
 .md-diagram-panel > svg { max-width: 100%; }
-[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; }
 [lang="mermaid"] .node text { font-size: 1rem; }
 table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
 
 
 :root {
@@ -395,20 +399,28 @@ table tr td:last-child {
     margin-bottom: 0;
 }
 
-.CodeMirror-gutters {
-    border-right: 1px solid #ddd;
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
 }
 
 .md-fences,
 code,
 tt {
-    border: 1px solid #dfe2e5;
+    border: 1px solid #e7eaed;
     background-color: #f8f8f8;
     border-radius: 3px;
     padding: 0;
-    font-family: Consolas, "Liberation Mono", Courier, monospace;
     padding: 2px 4px 0px 4px;
     font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
 }
 
 .md-fences {
@@ -418,6 +430,7 @@ tt {
     padding-top: 8px;
     padding-bottom: 6px;
 }
+
 
 .md-task-list-item > input {
   margin-left: -1.3em;
@@ -460,6 +473,10 @@ tt {
 	bottom: .375rem;
 }
 
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
 #write>h3.md-focus:before{
 	left: -1.5625rem;
 	top: .375rem;
@@ -479,14 +496,14 @@ tt {
 .md-image>.md-meta {
     /*border: 1px solid #ddd;*/
     border-radius: 3px;
-    font-family: Consolas, "Liberation Mono", Courier, monospace;
     padding: 2px 0px 0px 4px;
     font-size: 0.9em;
     color: inherit;
 }
 
-.md-tag{
-	color: inherit;
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
 }
 
 .md-toc { 
@@ -508,10 +525,6 @@ tt {
     border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
     border-style: solid;
     border-width: 1px;
-}
-
-#md-notification:before {
-    top: 10px;
 }
 
 /** focus mode */
@@ -546,6 +559,7 @@ header, .context-menu, .megamenu-content, footer{
 </style>
 </head>
 <body class='typora-export' >
-<div  id='write'  class = 'is-mac'><h2><a name='header-n0' class='md-header-anchor '></a>福华驾校简介</h2><blockquote><p>福华驾校——全国文明汽车驾驶学校</p><p>Slogan：福华学车，无微不至</p></blockquote><p><br></p><p><img src='http://www.fhxc.com/files/upload/20171222/%E5%9B%BE%E7%89%871.jpg' alt='选择福华的优势' referrerPolicy='no-referrer' /></p><p><br></p><h2><a name='header-n13' class='md-header-anchor '></a>福华学车相关事宜</h2><ol start='' ><li>福华学车手动挡 C1 是 <del>¥5680</del>  <strong>¥5280</strong> 全包，自动挡 C2 贵 300 元，全程包补考、补训费用，交完 ¥5280 后期不用交一分钱就可以拿到驾照。</li><li>5280 可以分期，无手续费、无利息；首付 1680 ，科目一合格后交 2000 元，科目二合格后交清余款。（自动挡分期标准一样）。</li><li>练车、体检、考试全程接送。</li><li>练车时间自由，学员有时间就可以练车，练车不需要排队，提前一天预约教练；练车不限学时，练会为止。</li><li>教练脾气好不骂人、不私下收费，如果对教练不满意可以换教练。</li><li>大概 4 至 6 个月拿证。</li><li>拿的驾照是广州驾照，考试在番禺。</li><li>训练场有番禺沙湾镇、番禺钟村、番禺石楼镇。</li></ol><p><br></p><h2><a name='header-n94' class='md-header-anchor '></a>番职门店优势</h2><p>番职门店内享受报名、签协议、付款、练习模拟机、学车接送“一条龙”服务。</p><p>解决学生到校外门店报名、练习模拟机等不断往返学校的诸多不便的问题。</p><p>番职门店支持分期付款、全程包接送，福华驾考通过率全番禺第一、价格低拿证快，校内官方门店值得信赖。</p><p><br></p><p><img src='https://github.com/FatliTalk/sanyueyi/blob/gh-pages/images/potato-fuhua.jpg?raw=true' alt='模拟机体验中心' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p><br></p><h2><a name='header-n44' class='md-header-anchor '></a>报名咨询</h2><p>福华驾校-番职报名指定地点：西区创业园 · 三月一科技（即名创优品旁）</p><p>咨询电话／微信： <a href="tel://15626236918">15626236918</a></p><p><br></p><p><img src='https://github.com/FatliTalk/sanyueyi/blob/gh-pages/images/pyp-fuhua.png?raw=true' alt='福华驾校·番职门店' referrerPolicy='no-referrer' /></p></div>
+<div  id='write'  class = 'is-mac'><h2><a name='header-n0' class='md-header-anchor '></a>一、福华驾校简介</h2><blockquote><p>福华驾校——全国文明汽车驾驶学校</p><p>Slogan：福华学车，无微不至</p><p>简介：福华驾校为深港集团旗下公司，直营驾校，百度可查，番禺区驾考通过率第一名。</p></blockquote><br><p><img src='http://www.fhxc.com/files/upload/20171222/%E5%9B%BE%E7%89%871.jpg' alt='选择福华的优势' referrerPolicy='no-referrer' /></p><br><h2><a name='header-n107' class='md-header-anchor '></a>二、报名费用（2018年9月2日-9月25日高校班）</h2><p>原价5680元，开学钜惠价4780元（另送100元代金券），即使用代金券后仅需4680元。</p><p>班别特点：</p><ol start='' ><li>福华驾校番职门店，享受校内门店报名、付款、交资料、
+    练习模拟机、学车接送“一条龙”服务</li><li>番职门店报名、沙湾训练场、番禺区考试拿证</li><li>费用全包，后期不用再交钱，每科免5次补考费</li><li>直营驾校，练车、考试，提供高校接送</li><li>练车时间自由，提前预约上车，夜间可练车</li><li>三星级教练带教，一对三教学服务</li><li>番职门店提供免费汽车模拟机教学，提供空调、Wi-Fi</li><li>福华驾校全番禺区驾考通过率第一名</li><li>支持分期付款，价格低拿证快（最快4-6个月拿证）</li></ol><p>&nbsp;</p><h4><a name='header-n136' class='md-header-anchor '></a>代金券说明：</h4><p>使用100元代金券，报名仅需4680元。</p><p>&nbsp;</p><h4><a name='header-n138' class='md-header-anchor '></a>代金券领取方法：</h4><p>报名后的学员只需要关注“福华驾校”公众号，发送“番职门店+学员姓名+报名领取代金券”，然后截图给我（李庆权），即可视为领取100元代金券成功，付款时即可享受100元优惠。</p><p>&nbsp;</p><h4><a name='header-n140' class='md-header-anchor '></a>分期付款说明：</h4><p>分期付款比全款贵200元，即4980元，使用代金券后仅需4880元。</p><p>首付1680元，科目一合格后交2000元，科目二合格后交清余款。</p><p>&nbsp;</p><h4><a name='header-n145' class='md-header-anchor '></a>其他可叠加优惠：</h4><p>具体可见推文：<a href='https://mp.weixin.qq.com/s/1K07algLGz_b6v_WOxAmrA' target='_blank' class='url'>https://mp.weixin.qq.com/s/1K07algLGz_b6v_WOxAmrA</a></p><ol start='' ><li><p>前200名报名的学员，只需“关注福华驾校”，“转发本推文至朋友圈”，“截图发送福华驾校公众号后台”，即可获得价值150元的床上四件套一份。</p></li><li><p>报名学员姓名含有“中、秋、国、庆”任意一字，不论先后顺序，多优惠100；</p><p>含有任意两字，不论先后顺序，多优惠300元；</p><p>报名学员姓名为“中秋”或“国庆”，不论姓氏，多优惠500元；</p><p>报名学员姓名为“中国”不论姓氏，立减1000元。</p></li></ol><br><h2><a name='header-n158' class='md-header-anchor '></a>三、模拟机是什么？</h2><blockquote><p>高仿真智能模拟舱保驾</p></blockquote><p>福华开启模拟学车新时代，模拟舱按照考场、训练场、教学车辆的规格以 1: 1 的大小通过 3D 画面呈现给学员，让学员能够在更安全更舒适的环境下，打好驾驶技能的基础，提高合格率。</p><br><h2><a name='header-n164' class='md-header-anchor '></a>四、多久可以拿证？</h2><p>勤练车、不挂科的情况下，最快4-6个月拿证。</p><br><h2><a name='header-n168' class='md-header-anchor '></a>五、我是否需要办理居住证？</h2><p>9月1号新规：广东省户籍，即使不是广州户口都可以正常在广州考驾照，无需办理居住证。</p><p>非广东省（外省）户籍，在广州考驾照，也只需要办理居住证而已，办理居住证非常简单，只需要带学生证和身份证的原件及其3张复印件，到学校保卫处2楼（图书馆隔壁）登记，然后等保卫处电话通知去拿居住证就可以了，一般一到两周就可以拿到居住证。</p><p>另外，报名是不需要先办理居住证的，可以先报名，再去办理居住证也不急，因为居住证是约考科目一才需要用的。</p><br><h2><a name='header-n27' class='md-header-anchor '></a>六、番职门店优势</h2><p>番职门店内享受报名、签协议、付款、练习模拟机、学车接送“一条龙”服务。</p><p>解决学生到校外门店报名、练习模拟机等不断往返学校的诸多不便的问题。</p><p>番职门店支持分期付款、全程包接送，福华驾考通过率全番禺第一、价格低拿证快，校内官方门店值得信赖。</p><br><p><img src='https://github.com/FatliTalk/sanyueyi/blob/gh-pages/images/potato-fuhua.jpg?raw=true' alt='模拟机体验中心' referrerPolicy='no-referrer' /></p><p>（广州番禺职业技术学院-西区创业园-福华驾校·番职门店）</p><br><h2><a name='header-n35' class='md-header-anchor '></a>七、报名咨询</h2><p>福华驾校-番职报名指定地点：西区创业园 · 三月一科技（即名创优品旁）</p><p>咨询电话／微信： <a href="tel://15626236918">15626236918</a></p><br><p><img src='https://github.com/FatliTalk/sanyueyi/blob/gh-pages/images/pyp-fuhua.png?raw=true' alt='福华驾校·番职门店' referrerPolicy='no-referrer' /></p></div>
 </body>
 </html>
