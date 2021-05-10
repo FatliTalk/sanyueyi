@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 响应式宽度：让网页宽度=设备屏幕宽度，即让页面内容在屏幕宽度中全部展示，无需因为网页过宽需要左右滑动查看 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新技术+行业</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.13.0/Sortable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuedraggable@2.24.3/dist/vuedraggable.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
+    <style>
+        body {
+            /* 填充满页面高度(而不仅是填充device-height设备屏幕高度：会导致背景色无法应用到当前屏幕高度未能显示出来的网页部分) */
+            min-height: 100vh;
+            /* https://webgradients.com/ */
+            /* 162 Perfect White */
+            background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+        }
+        .list-group-item {
+            /* text-align: center; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .list-group-item-lg {
+            height: 30vh;
+        }
+        .new-technology-text, .industry-text {
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            text-align: center;
+        }
+        .empty_row {
+            height: 30vh;
+        }
+        .list_group_item_success {
+            color: #3c763d;
+            background-color: #dff0d8;
+        }
+        .list_group_item_info {
+            color: #31708f;
+            background-color: #d9edf7;
+        }
+        .list_group_item_warning {
+            color: #8a6d3b;
+            background-color: #fcf8e3;
+        }
+        .list_group_item_danger {
+            color: #a94442;
+            background-color: #f2dede;
+        }
+        .list_group_item_custom {
+            color: #696969;
+            background-color: #F5F5F5;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="container-fluid" style="margin-top: 5vh;">
+        <div class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 industry-text">
+                <h4>行业：</h4>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <!-- draggable=".draggable" 作用：固定(fixed)位置（也禁止拖拽）  handle=".handle" 作用：禁止拖拽 -->
+                <draggable class="list-group" v-model="industry1" draggable=".draggable" group="group1" @add="onAddGroup1">
+                    <div class="list-group-item list-group-item-lg" v-for="item in industry1" :key="item.id"
+                        v-bind:class="{ list_group_item_success: isActiveColorGroup1 }">
+                        <h2>{{item.name}}</h2>
+                    </div>
+                </draggable>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <draggable class="list-group" v-model="industry2" draggable=".draggable" group="group2" @add="onAddGroup2">
+                    <div class="list-group-item list-group-item-lg" v-for="item in industry2" :key="item.id"
+                        v-bind:class="{ list_group_item_danger: isActiveColorGroup2 }">
+                        <h2>{{item.name}}</h2>
+                    </div>
+                </draggable>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <draggable class="list-group" v-model="industry3" draggable=".draggable" group="group3" @add="onAddGroup3">
+                    <div class="list-group-item list-group-item-lg" v-for="item in industry3" :key="item.id"
+                        v-bind:class="{ list_group_item_info: isActiveColorGroup3 }">
+                        <h2>{{item.name}}</h2>
+                    </div>
+                </draggable>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <draggable class="list-group" v-model="industry4" draggable=".draggable" group="group4" @add="onAddGroup4">
+                    <div class="list-group-item list-group-item-lg" v-for="item in industry4" :key="item.id"
+                        v-bind:class="{ list_group_item_custom: isActiveColorGroup4 }">
+                        <h2>{{item.name}}</h2>
+                    </div>
+                </draggable>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <draggable class="list-group" v-model="industry5" draggable=".draggable" group="group5" @add="onAddGroup5">
+                    <div class="list-group-item list-group-item-lg" v-for="item in industry5" :key="item.id"
+                        v-bind:class="{ list_group_item_warning: isActiveColorGroup5 }">
+                        <h2>{{item.name}}</h2>
+                    </div>
+                </draggable>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                <button type="button" class="btn btn-default" onClick="window.location.reload();">
+                    刷新页面
+                </button>
+                <br>
+                <br>
+                <button type="button" class="btn btn-success" v-on:click="onConfetti">
+                    完成点这里
+                </button>
+            </div>
+        </div><!-- End .row -->
+        <!-- v-bind:class=“{'css类名':控制是否显示（true or false)}” -->
+        <div class="row" v-bind:class="{ empty_row: isDisplay }"></div>
+        <div class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 new-technology-text">
+                <h4>新技术：<small>(请将“新技术”卡牌拖动到对应的“行业”中)</small></h4>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <draggable class="list-group" v-model="technology1" group="group2">
+                    <div class="list-group-item list-group-item-danger" v-for="item in technology1" :key="item.id">
+                        <h3>{{item.name}}</h3>
+                    </div>
+                </draggable>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <draggable class="list-group" v-model="technology2" group="group5">
+                    <div class="list-group-item list-group-item-warning" v-for="item in technology2" :key="item.id">
+                        <h3>{{item.name}}</h3>
+                    </div>
+                </draggable>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <draggable class="list-group" v-model="technology3" group="group4">
+                    <div class="list-group-item list_group_item_custom" v-for="item in technology3" :key="item.id">
+                        <h3>{{item.name}}</h3>
+                    </div>
+                </draggable>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <draggable class="list-group" v-model="technology4" group="group3">
+                    <div class="list-group-item list-group-item-info" v-for="item in technology4" :key="item.id">
+                        <h3>{{item.name}}</h3>
+                    </div>
+                </draggable>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <draggable class="list-group" v-model="technology5" group="group1">
+                    <div class="list-group-item list-group-item-success" v-for="item in technology5" :key="item.id">
+                        <h3>{{item.name}}</h3>
+                    </div>
+                </draggable>
+            </div>
+        </div><!-- End .row -->
+    </div><!-- End #app -->
+    <script>
+        // 全局注册组件
+        Vue.component('vuedraggable', window.vuedraggable.name)
+        var app = new Vue({
+            el: '#app',
+            components: {
+                vuedraggable,
+            },
+            data() {
+                return {
+                    isDisplay: true,
+                    isActiveColorGroup1: false,
+                    isActiveColorGroup2: false,
+                    isActiveColorGroup3: false,
+                    isActiveColorGroup4: false,
+                    isActiveColorGroup5: false,
+                    // draggable: false,
+                    industry1: [
+                        { id: 1, name: "智慧农业" },
+                    ],
+                    technology1: [
+                        { id: 2, name: "防瞌睡报警器" },
+                    ],
+                    industry2: [
+                        { id: 3, name: "高危人群", },
+                    ],
+                    technology2: [
+                        { id: 4, name: "药片检测设备" },
+                    ],
+                    industry3: [
+                        { id: 5, name: "智能制造 " },
+                    ],
+                    technology3: [
+                        { id: 6, name: "盲人刀具" },
+                    ],
+                    industry4: [
+                        { id: 7, name: "弱势群体" },
+                    ],
+                    technology4: [
+                        { id: 8, name: "开心果检测机" },
+                    ],
+                    industry5: [
+                        { id: 9, name: "国药大健康" },
+                    ],
+                    technology5: [
+                        { id: 10, name: "摘果器" },
+                    ],
+                };
+            },
+            // （生命周期函数）初始化执行
+            mounted() {
+                this.descriptionAlert()
+            },
+            methods: {
+                // // 开始拖拽事件
+                // onStart() {
+                //     this.draggable = true;
+                // },
+                // // 拖拽结束事件
+                // onEnd() {
+                //     this.draggable = false;
+                // },
+                // 从一个数组拖拽到另外一个数组时触发的事件
+                onAddGroup1() {
+                    this.isDisplay = false;
+                    this.isActiveColorGroup1 = true;
+                    swal({
+                        icon: "success",
+                        button: false,
+                        timer: 1200,
+                    });
+                },
+                onAddGroup2() {
+                    this.isDisplay = false;
+                    this.isActiveColorGroup2 = true;
+                    swal({
+                        icon: "success",
+                        button: false,
+                        timer: 1200,
+                    });
+                },
+                onAddGroup3() {
+                    this.isDisplay = false;
+                    this.isActiveColorGroup3 = true;
+                    swal({
+                        icon: "success",
+                        button: false,
+                        timer: 1200,
+                    });
+                },
+                onAddGroup4() {
+                    this.isDisplay = false;
+                    this.isActiveColorGroup4 = true;
+                    swal({
+                        icon: "success",
+                        button: false,
+                        timer: 1200,
+                    });
+                },
+                onAddGroup5() {
+                    this.isDisplay = false;
+                    this.isActiveColorGroup5 = true;
+                    swal({
+                        icon: "success",
+                        button: false,
+                        timer: 1200,
+                    });
+                },
+                descriptionAlert() {
+                    swal({
+                        title: "操作说明",
+                        text: "请将底部的「新技术」卡片，拖动到上方⬆对应的「行业」卡片中。全部匹配完成后，请点击右上角的绿色按钮",
+                        button: "开始",
+                    });
+                },
+                onConfetti() {
+                    swal({
+                        icon: "success",
+                        title: "Well Done 恭喜你🎉🎉 ",
+                        button: "关闭",
+                    });
+                    // copy from: https://codepen.io/longbin/pen/BaKVemE
+                    "use strict";
+                    var _createClass = function () {
+                        function defineProperties(target, props) {
+                            for (var i = 0; i < props.length; i++) {
+                                var descriptor = props[i];
+                                descriptor.enumerable = descriptor.enumerable || false;
+                                descriptor.configurable = true;
+                                if ("value" in descriptor) descriptor.writable = true;
+                                Object.defineProperty(target, descriptor.key, descriptor);
+                            }
+                        }
+
+                        return function (Constructor, protoProps, staticProps) {
+                            if (protoProps) defineProperties(Constructor.prototype, protoProps);
+                            if (staticProps) defineProperties(Constructor, staticProps);
+                            return Constructor;
+                        };
+                    }();
+
+                    function _classCallCheck(instance, Constructor) {
+                        if (!(instance instanceof Constructor)) {
+                            throw new TypeError("Cannot call a class as a function");
+                        }
+                    }
+
+                    var Progress = function () {
+                        function Progress() {
+                            var param = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+                            _classCallCheck(this, Progress);
+
+                            this.timestamp = null;
+                            this.duration = param.duration || Progress.CONST.DURATION;
+                            this.progress = 0;
+                            this.delta = 0;
+                            this.progress = 0;
+                            this.isLoop = !!param.isLoop;
+
+                            this.reset();
+                        }
+
+                        Progress.prototype.reset = function reset() {
+                            this.timestamp = null;
+                        };
+
+                        Progress.prototype.start = function start(now) {
+                            this.timestamp = now;
+                        };
+
+                        Progress.prototype.tick = function tick(now) {
+                            if (this.timestamp) {
+                                this.delta = now - this.timestamp;
+                                this.progress = Math.min(this.delta / this.duration, 1);
+
+                                if (this.progress >= 1 && this.isLoop) {
+                                    this.start(now);
+                                }
+
+                                return this.progress;
+                            } else {
+                                return 0;
+                            }
+                        };
+
+                        _createClass(Progress, null, [{
+                            key: "CONST",
+                            get: function get() {
+                                return {
+                                    DURATION: 1000
+                                };
+                            }
+                        }]);
+
+                        return Progress;
+                    }();
+
+                    var Confetti = function () {
+                        function Confetti(param) {
+                            _classCallCheck(this, Confetti);
+
+                            this.parent = param.elm || document.body;
+                            this.canvas = document.createElement("canvas");
+                            this.ctx = this.canvas.getContext("2d");
+                            this.width = param.width || this.parent.offsetWidth;
+                            this.height = param.height || this.parent.offsetHeight;
+                            this.length = param.length || Confetti.CONST.PAPER_LENGTH;
+                            this.yRange = param.yRange || this.height * 2;
+                            this.progress = new Progress({
+                                duration: param.duration,
+                                isLoop: true
+                            });
+                            this.rotationRange = typeof param.rotationLength === "number" ? param.rotationRange : 10;
+                            this.speedRange = typeof param.speedRange === "number" ? param.speedRange : 10;
+                            this.sprites = [];
+
+                            this.canvas.style.cssText = ["display: block", "position: absolute", "top: 0", "left: 0", "pointer-events: none"].join(";");
+
+                            this.render = this.render.bind(this);
+
+                            this.build();
+
+                            this.parent.append(this.canvas);
+                            this.progress.start(performance.now());
+
+                            requestAnimationFrame(this.render);
+                        }
+
+                        Confetti.prototype.build = function build() {
+                            for (var i = 0; i < this.length; ++i) {
+                                var canvas = document.createElement("canvas"),
+                                    ctx = canvas.getContext("2d");
+
+                                canvas.width = Confetti.CONST.SPRITE_WIDTH;
+                                canvas.height = Confetti.CONST.SPRITE_HEIGHT;
+
+                                canvas.position = {
+                                    initX: Math.random() * this.width,
+                                    initY: -canvas.height - Math.random() * this.yRange
+                                };
+
+                                canvas.rotation = this.rotationRange / 2 - Math.random() * this.rotationRange;
+                                canvas.speed = this.speedRange / 2 + Math.random() * (this.speedRange / 2);
+
+                                ctx.save();
+                                ctx.fillStyle = Confetti.CONST.COLORS[Math.random() * Confetti.CONST.COLORS.length | 0];
+                                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                                ctx.restore();
+
+                                this.sprites.push(canvas);
+                            }
+                        };
+
+                        Confetti.prototype.render = function render(now) {
+                            var progress = this.progress.tick(now);
+
+                            this.canvas.width = this.width;
+                            this.canvas.height = this.height;
+
+                            for (var i = 0; i < this.length; ++i) {
+                                this.ctx.save();
+                                this.ctx.translate(this.sprites[i].position.initX + this.sprites[i].rotation * Confetti.CONST.ROTATION_RATE * progress, this.sprites[i].position.initY + progress * (this.height + this.yRange));
+                                this.ctx.rotate(this.sprites[i].rotation);
+                                this.ctx.drawImage(this.sprites[i], -Confetti.CONST.SPRITE_WIDTH * Math.abs(Math.sin(progress * Math.PI * 2 * this.sprites[i].speed)) / 2, -Confetti.CONST.SPRITE_HEIGHT / 2, Confetti.CONST.SPRITE_WIDTH * Math.abs(Math.sin(progress * Math.PI * 2 * this.sprites[i].speed)), Confetti.CONST.SPRITE_HEIGHT);
+                                this.ctx.restore();
+                            }
+
+                            requestAnimationFrame(this.render);
+                        };
+
+                        _createClass(Confetti, null, [{
+                            key: "CONST",
+                            get: function get() {
+                                return {
+                                    SPRITE_WIDTH: 9,
+                                    SPRITE_HEIGHT: 16,
+                                    PAPER_LENGTH: 100,
+                                    DURATION: 8000,
+                                    ROTATION_RATE: 50,
+                                    COLORS: ["#EF5350", "#EC407A", "#AB47BC", "#7E57C2", "#5C6BC0", "#42A5F5", "#29B6F6", "#26C6DA", "#26A69A", "#66BB6A", "#9CCC65", "#D4E157", "#FFEE58", "#FFCA28", "#FFA726", "#FF7043", "#8D6E63", "#BDBDBD", "#78909C"]
+                                };
+                            }
+                        }]);
+
+                        return Confetti;
+                    }();
+
+                    (function () {
+                        var DURATION = 8000,
+                            LENGTH = 120;
+
+                        new Confetti({
+                            width: window.innerWidth,
+                            height: window.innerHeight,
+                            length: LENGTH,
+                            duration: DURATION
+                        });
+
+                        setTimeout(function () {
+                            new Confetti({
+                                width: window.innerWidth,
+                                height: window.innerHeight,
+                                length: LENGTH,
+                                duration: DURATION
+                            });
+                        }, DURATION / 2);
+                    })();
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>

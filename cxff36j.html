@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 响应式宽度：让网页宽度=设备屏幕宽度，即让页面内容在屏幕宽度中全部展示，无需因为网页过宽需要左右滑动查看 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创新方法36技</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.13.0/Sortable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuedraggable@2.24.3/dist/vuedraggable.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
+    <style>
+        body {
+            /* 填充满页面高度(而不仅是填充device-height设备屏幕高度：会导致背景色无法应用到当前屏幕高度未能显示出来的网页部分) */
+            min-height: 100vh;
+            /* https://webgradients.com/ */
+            /* 018 Cloudy Knoxville */
+            background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+        }
+        .case-text, .method-text {
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            text-align: center;
+        }
+        .list_group_item_success {
+            background-color: #dff0d8;
+        }
+        .list_group_item_info {
+            background-color: #d9edf7;
+        }
+        .list_group_item_warning {
+            background-color: #fcf8e3;
+        }
+        .list_group_item_danger {
+            background-color: #f2dede;
+        }
+        .list_group_item_custom {
+            background-color: #FFE0B2;
+        }
+        .list-group-item img {
+            height: 25vh;
+            pointer-events: none;
+        }
+        .list-group-item-custom {
+            position: relative;
+            display: block;
+            padding: 10px 15px;
+            margin-bottom: -1px;
+            background-color: #fff;
+            /* border: 1px solid #ddd; */
+            border: 1px solid #fff;
+        }
+        .list-group-item-custom img {
+            height: 25vh;
+        }
+        .empty_row {
+            height: 30vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="container-fluid" style="margin-top: 5vh;">
+        <div class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 method-text">
+                <h4>创新方法：</h4>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <!-- draggable=".draggable" 作用：固定(fixed)位置（也禁止拖拽）  handle=".handle" 作用：禁止拖拽 -->
+                <draggable class="list-group" v-model="method1" draggable=".draggable" group="group1" @add="onAddGroup1">
+                    <div class="list-group-item" v-for="item in method1" :key="item.id" 
+                        v-bind:class="{ list_group_item_warning: isActiveColorGroup1 }">
+                        <img :src="item.card" alt="创新方法-卡牌" class="img-responsive center-block">
+                    </div>
+                </draggable>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <draggable class="list-group" v-model="method2" draggable=".draggable" group="group2" @add="onAddGroup2">
+                    <div class="list-group-item" v-for="item in method2" :key="item.id"
+                        v-bind:class="{ list_group_item_custom: isActiveColorGroup2 }">
+                        <img :src="item.card" alt="创新方法-卡牌" class="img-responsive center-block">
+                    </div>
+                </draggable>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <draggable class="list-group" v-model="method3" draggable=".draggable" group="group3" @add="onAddGroup3">
+                    <div class="list-group-item" v-for="item in method3" :key="item.id"
+                        v-bind:class="{ list_group_item_danger: isActiveColorGroup3 }">
+                        <img :src="item.card" alt="创新方法-卡牌" class="img-responsive center-block">
+                    </div>
+                </draggable>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <draggable class="list-group" v-model="method4" draggable=".draggable" group="group4" @add="onAddGroup4">
+                    <div class="list-group-item" v-for="item in method4" :key="item.id"
+                        v-bind:class="{ list_group_item_info: isActiveColorGroup4 }">
+                        <img :src="item.card" alt="创新方法-卡牌" class="img-responsive center-block">
+                    </div>
+                </draggable>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <draggable class="list-group" v-model="method5" draggable=".draggable" group="group5" @add="onAddGroup5">
+                    <div class="list-group-item" v-for="item in method5" :key="item.id"
+                        v-bind:class="{ list_group_item_success: isActiveColorGroup5 }">
+                        <img :src="item.card" alt="创新方法-卡牌" class="img-responsive center-block">
+                    </div>
+                </draggable>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                <button type="button" class="btn btn-default" onClick="window.location.reload();">
+                    刷新页面
+                </button>
+                <br>
+                <br>
+                <button type="button" class="btn btn-success" v-on:click="onConfetti">
+                    完成点这里
+                </button>
+            </div>
+        </div><!-- End .row -->
+        <!-- v-bind:class=“{'css类名':控制是否显示（true or false)}” -->
+        <div class="row" v-bind:class="{ empty_row: isDisplay }"></div>
+        <div class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 case-text">
+                <h4>案例：<small>(请将“案例”卡牌拖动到对应的“创新方法”中)</small></h4>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <draggable class="list-group" v-model="case1" group="group2">
+                    <div class="list-group-item-custom" v-for="item in case1" :key="item.id">
+                        <img :src="item.card" alt="案例-卡牌" class="img-responsive center-block">
+                    </div>
+                </draggable>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <draggable class="list-group" v-model="case2" group="group5">
+                    <div class="list-group-item-custom" v-for="item in case2" :key="item.id">
+                        <img :src="item.card" alt="案例-卡牌" class="img-responsive center-block">
+                    </div>
+                </draggable>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <draggable class="list-group" v-model="case3" group="group4">
+                    <div class="list-group-item-custom" v-for="item in case3" :key="item.id">
+                        <img :src="item.card" alt="案例-卡牌" class="img-responsive center-block">
+                    </div>
+                </draggable>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <draggable class="list-group" v-model="case4" group="group3">
+                    <div class="list-group-item-custom" v-for="item in case4" :key="item.id">
+                        <img :src="item.card" alt="案例-卡牌" class="img-responsive center-block">
+                    </div>
+                </draggable>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <draggable class="list-group" v-model="case5" group="group1">
+                    <div class="list-group-item-custom" v-for="item in case5" :key="item.id">
+                        <img :src="item.card" alt="案例-卡牌" class="img-responsive center-block">
+                    </div>
+                </draggable>
+            </div>
+        </div><!-- End .row -->
+    </div><!-- End #app -->
+    <script>
+        // 全局注册组件
+        Vue.component('vuedraggable', window.vuedraggable.name)
+        var app = new Vue({
+            el: '#app',
+            // data: {
+            //     isDisplay: true,
+            // },
+            components: {
+                vuedraggable,
+            },
+            data() {
+                return {
+                    isDisplay: true,
+                    isActiveColorGroup1: false,
+                    isActiveColorGroup2: false,
+                    isActiveColorGroup3: false,
+                    isActiveColorGroup4: false,
+                    isActiveColorGroup5: false,
+                    // draggable: false,
+                    method1: [
+                        // { id: 1, card: "http://campus.xiaozhanhua.com/sanyueyi-com/36skills-method1.png" },
+                        // { id: 1, card: "./images/36skills-method1.png" },
+                        { id: 1, card: "https://github.com/FatliTalk/images/blob/master/36skills-method1.png?raw=true" },
+                    ],
+                    case1: [
+                        // { id: 2, card: "http://campus.xiaozhanhua.com/sanyueyi-com/36skills-case1.png?raw=true" },
+                        // { id: 2, card: "./images/36skills-case1.png" },
+                        { id: 2, card: "https://github.com/FatliTalk/images/blob/master/36skills-case1.png?raw=true" },
+                    ],
+                    method2: [
+                        // { id: 3, card: "http://campus.xiaozhanhua.com/sanyueyi-com/36skills-method2.png" },
+                        // { id: 3, card: "./images/36skills-method2.png" },
+                        { id: 3, card: "https://github.com/FatliTalk/images/blob/master/36skills-method2.png?raw=true" },
+                    ],
+                    case2: [
+                        // { id: 4, card: "http://campus.xiaozhanhua.com/sanyueyi-com/36skills-case2.png" },
+                        // { id: 4, card: "./images/36skills-case2.png" },
+                        { id: 4, card: "http://campus.xiaozhanhua.com/sanyueyi-com/36skills-case2.png?raw=true" },
+                    ],
+                    method3: [
+                        // { id: 5, card: "http://campus.xiaozhanhua.com/sanyueyi-com/36skills-method3.png" },
+                        // { id: 5, card: "./images/36skills-method3.png" },
+                        { id: 5, card: "https://github.com/FatliTalk/images/blob/master/36skills-method3.png?raw=true" },
+                    ],
+                    case3: [
+                        // { id: 6, card: "http://campus.xiaozhanhua.com/sanyueyi-com/36skills-case3.png" },
+                        // { id: 6, card: "./images/36skills-case3.png" },
+                        { id: 6, card: "https://github.com/FatliTalk/images/blob/master/36skills-case3.png?raw=true" },
+                    ],
+                    method4: [
+                        // { id: 7, card: "http://campus.xiaozhanhua.com/sanyueyi-com/36skills-method4.png" },
+                        // { id: 7, card: "./images/36skills-method4.png" },
+                        { id: 7, card: "https://github.com/FatliTalk/images/blob/master/36skills-method4.png?raw=true" },
+                    ],
+                    case4: [
+                        // { id: 8, card: "http://campus.xiaozhanhua.com/sanyueyi-com/36skills-case4.png" },
+                        // { id: 8, card: "./images/36skills-case4.png" },
+                        { id: 8, card: "https://github.com/FatliTalk/images/blob/master/36skills-case4.png?raw=true" },
+                    ],
+                    method5: [
+                        // { id: 9, card: "http://campus.xiaozhanhua.com/sanyueyi-com/36skills-method5.png" },
+                        // { id: 9, card: "./images/36skills-method5.png" },
+                        { id: 9, card: "https://github.com/FatliTalk/images/blob/master/36skills-method5.png?raw=true" },
+                    ],
+                    case5: [
+                        // { id: 10, card: "http://campus.xiaozhanhua.com/sanyueyi-com/36skills-case5.png" },
+                        // { id: 10, card: "./images/36skills-case5.png" },
+                        { id: 10, card: "https://github.com/FatliTalk/images/blob/master/36skills-case5.png?raw=true" },
+                    ],
+                };
+            },
+            // （生命周期函数）初始化执行
+            mounted() {
+                this.descriptionAlert()
+            },
+            methods: {
+                // // 开始拖拽事件
+                // onStart() {
+                //     this.draggable = true;
+                // },
+                // // 拖拽结束事件
+                // onEnd() {
+                //     this.draggable = false;
+                // },
+                // 从一个数组拖拽到另外一个数组时触发的事件
+                onAddGroup1() {
+                    this.isDisplay = false;
+                    this.isActiveColorGroup1 = true;
+                },
+                onAddGroup2() {
+                    this.isDisplay = false;
+                    this.isActiveColorGroup2 = true;
+                },
+                onAddGroup3() {
+                    this.isDisplay = false;
+                    this.isActiveColorGroup3 = true;
+                },
+                onAddGroup4() {
+                    this.isDisplay = false;
+                    this.isActiveColorGroup4 = true;
+                },
+                onAddGroup5() {
+                    this.isDisplay = false;
+                    this.isActiveColorGroup5 = true;
+                },
+                descriptionAlert() {
+                    swal({
+                        title: "操作说明",
+                        text: "请将底部的「案例」卡牌，拖动到上方⬆对应的「创新方法」卡牌中。全部匹配完成后，请点击右上角的绿色按钮",
+                        button: "开始",
+                    });
+                },
+                onConfetti() {
+                    swal({
+                        icon: "success",
+                        title: "Well Done 恭喜你🎉🎉 ",
+                        button: "关闭",
+                    });
+                    // copy from: https://codepen.io/longbin/pen/BaKVemE
+                    "use strict";
+                    var _createClass = function () {
+                        function defineProperties(target, props) {
+                            for (var i = 0; i < props.length; i++) {
+                                var descriptor = props[i];
+                                descriptor.enumerable = descriptor.enumerable || false;
+                                descriptor.configurable = true;
+                                if ("value" in descriptor) descriptor.writable = true;
+                                Object.defineProperty(target, descriptor.key, descriptor);
+                            }
+                        }
+
+                        return function (Constructor, protoProps, staticProps) {
+                            if (protoProps) defineProperties(Constructor.prototype, protoProps);
+                            if (staticProps) defineProperties(Constructor, staticProps);
+                            return Constructor;
+                        };
+                    }();
+
+                    function _classCallCheck(instance, Constructor) {
+                        if (!(instance instanceof Constructor)) {
+                            throw new TypeError("Cannot call a class as a function");
+                        }
+                    }
+
+                    var Progress = function () {
+                        function Progress() {
+                            var param = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+                            _classCallCheck(this, Progress);
+
+                            this.timestamp = null;
+                            this.duration = param.duration || Progress.CONST.DURATION;
+                            this.progress = 0;
+                            this.delta = 0;
+                            this.progress = 0;
+                            this.isLoop = !!param.isLoop;
+
+                            this.reset();
+                        }
+
+                        Progress.prototype.reset = function reset() {
+                            this.timestamp = null;
+                        };
+
+                        Progress.prototype.start = function start(now) {
+                            this.timestamp = now;
+                        };
+
+                        Progress.prototype.tick = function tick(now) {
+                            if (this.timestamp) {
+                                this.delta = now - this.timestamp;
+                                this.progress = Math.min(this.delta / this.duration, 1);
+
+                                if (this.progress >= 1 && this.isLoop) {
+                                    this.start(now);
+                                }
+
+                                return this.progress;
+                            } else {
+                                return 0;
+                            }
+                        };
+
+                        _createClass(Progress, null, [{
+                            key: "CONST",
+                            get: function get() {
+                                return {
+                                    DURATION: 1000
+                                };
+                            }
+                        }]);
+
+                        return Progress;
+                    }();
+
+                    var Confetti = function () {
+                        function Confetti(param) {
+                            _classCallCheck(this, Confetti);
+
+                            this.parent = param.elm || document.body;
+                            this.canvas = document.createElement("canvas");
+                            this.ctx = this.canvas.getContext("2d");
+                            this.width = param.width || this.parent.offsetWidth;
+                            this.height = param.height || this.parent.offsetHeight;
+                            this.length = param.length || Confetti.CONST.PAPER_LENGTH;
+                            this.yRange = param.yRange || this.height * 2;
+                            this.progress = new Progress({
+                                duration: param.duration,
+                                isLoop: true
+                            });
+                            this.rotationRange = typeof param.rotationLength === "number" ? param.rotationRange : 10;
+                            this.speedRange = typeof param.speedRange === "number" ? param.speedRange : 10;
+                            this.sprites = [];
+
+                            this.canvas.style.cssText = ["display: block", "position: absolute", "top: 0", "left: 0", "pointer-events: none"].join(";");
+
+                            this.render = this.render.bind(this);
+
+                            this.build();
+
+                            this.parent.append(this.canvas);
+                            this.progress.start(performance.now());
+
+                            requestAnimationFrame(this.render);
+                        }
+
+                        Confetti.prototype.build = function build() {
+                            for (var i = 0; i < this.length; ++i) {
+                                var canvas = document.createElement("canvas"),
+                                    ctx = canvas.getContext("2d");
+
+                                canvas.width = Confetti.CONST.SPRITE_WIDTH;
+                                canvas.height = Confetti.CONST.SPRITE_HEIGHT;
+
+                                canvas.position = {
+                                    initX: Math.random() * this.width,
+                                    initY: -canvas.height - Math.random() * this.yRange
+                                };
+
+                                canvas.rotation = this.rotationRange / 2 - Math.random() * this.rotationRange;
+                                canvas.speed = this.speedRange / 2 + Math.random() * (this.speedRange / 2);
+
+                                ctx.save();
+                                ctx.fillStyle = Confetti.CONST.COLORS[Math.random() * Confetti.CONST.COLORS.length | 0];
+                                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                                ctx.restore();
+
+                                this.sprites.push(canvas);
+                            }
+                        };
+
+                        Confetti.prototype.render = function render(now) {
+                            var progress = this.progress.tick(now);
+
+                            this.canvas.width = this.width;
+                            this.canvas.height = this.height;
+
+                            for (var i = 0; i < this.length; ++i) {
+                                this.ctx.save();
+                                this.ctx.translate(this.sprites[i].position.initX + this.sprites[i].rotation * Confetti.CONST.ROTATION_RATE * progress, this.sprites[i].position.initY + progress * (this.height + this.yRange));
+                                this.ctx.rotate(this.sprites[i].rotation);
+                                this.ctx.drawImage(this.sprites[i], -Confetti.CONST.SPRITE_WIDTH * Math.abs(Math.sin(progress * Math.PI * 2 * this.sprites[i].speed)) / 2, -Confetti.CONST.SPRITE_HEIGHT / 2, Confetti.CONST.SPRITE_WIDTH * Math.abs(Math.sin(progress * Math.PI * 2 * this.sprites[i].speed)), Confetti.CONST.SPRITE_HEIGHT);
+                                this.ctx.restore();
+                            }
+
+                            requestAnimationFrame(this.render);
+                        };
+
+                        _createClass(Confetti, null, [{
+                            key: "CONST",
+                            get: function get() {
+                                return {
+                                    SPRITE_WIDTH: 9,
+                                    SPRITE_HEIGHT: 16,
+                                    PAPER_LENGTH: 100,
+                                    DURATION: 8000,
+                                    ROTATION_RATE: 50,
+                                    COLORS: ["#EF5350", "#EC407A", "#AB47BC", "#7E57C2", "#5C6BC0", "#42A5F5", "#29B6F6", "#26C6DA", "#26A69A", "#66BB6A", "#9CCC65", "#D4E157", "#FFEE58", "#FFCA28", "#FFA726", "#FF7043", "#8D6E63", "#BDBDBD", "#78909C"]
+                                };
+                            }
+                        }]);
+
+                        return Confetti;
+                    }();
+
+                    (function () {
+                        var DURATION = 8000,
+                            LENGTH = 120;
+
+                        new Confetti({
+                            width: window.innerWidth,
+                            height: window.innerHeight,
+                            length: LENGTH,
+                            duration: DURATION
+                        });
+
+                        setTimeout(function () {
+                            new Confetti({
+                                width: window.innerWidth,
+                                height: window.innerHeight,
+                                length: LENGTH,
+                                duration: DURATION
+                            });
+                        }, DURATION / 2);
+                    })();
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>
